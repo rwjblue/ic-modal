@@ -316,11 +316,18 @@ define(
        * @private
        */
 
-      closeWhen: function() {
-        if (!this.get('close-when')) return;
+      closeWhenObserver: function() {
+        var property = 'closeWhen';
+        var closeWhen = this.getWithDefault(property, null);
+        if (closeWhen === null) {
+          property = 'close-when';
+          closeWhen = this.get(property);
+        }
+
+        if (!closeWhen) return;
         this.close();
-        this.set('close-when', false);
-      }.observes('close-when'),
+        this.set(property, false);
+      }.observes('close-when', 'closeWhen'),
 
       /**
        * Often you need a mechanism besides an ic-modal-toggle to open a dialog,
@@ -354,11 +361,18 @@ define(
        * @private
        */
 
-      openWhen: function() {
-        if (!this.get('open-when')) return;
+      openWhenObserver: function() {
+        var property = 'openWhen';
+        var openWhen = this.getWithDefault(property, null);
+        if (openWhen === null) {
+          property = 'open-when';
+          openWhen = this.get(property);
+        }
+
+        if (!openWhen) return;
         this.open();
-        this.set('open-when', false);
-      }.observes('open-when'),
+        this.set(property, false);
+      }.observes('open-when', 'openWhen'),
 
       /**
        * All Dialogs need a title for the screenreader (and the UI, usually

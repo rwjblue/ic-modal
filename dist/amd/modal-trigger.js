@@ -65,7 +65,8 @@ define(
        */
 
       toggleModalVisibility: function(event) {
-        this.sendAction('on-toggle', this);
+        var action = this.hasOwnProperty('onToggle') ? 'onToggle' : 'on-toggle';
+        this.sendAction(action, this);
         // don't focus if it was a mouse click, cause that's ugly
         var wasMouse = event.clientX && event.clientY;
         this.get('modal').toggleVisibility(this, {focus: !wasMouse});
