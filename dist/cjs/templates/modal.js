@@ -1,64 +1,159 @@
 "use strict";
-var Ember = require("ember")["default"] || require("ember");
-exports["default"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
-this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, self=this, functionType="function", blockHelperMissing=helpers.blockHelperMissing, helperMissing=helpers.helperMissing;
-
-function program1(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n  <ic-modal-main>\n\n    ");
-  stack1 = helpers['if'].call(depth0, "makeTitle", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n\n    ");
-  stack1 = helpers['if'].call(depth0, "makeTrigger", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n\n    ");
-  stack1 = helpers._triageMustache.call(depth0, "yield", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n\n  </ic-modal-main>\n");
-  return buffer;
-  }
-function program2(depth0,data) {
-  
-  var buffer = '', stack1, helper, options;
-  data.buffer.push("\n      ");
-  options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[],types:[],data:data}
-  if (helper = helpers['ic-modal-title']) { stack1 = helper.call(depth0, options); }
-  else { helper = (depth0 && depth0['ic-modal-title']); stack1 = typeof helper === functionType ? helper.call(depth0, options) : helper; }
-  if (!helpers['ic-modal-title']) { stack1 = blockHelperMissing.call(depth0, 'ic-modal-title', {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[],types:[],data:data}); }
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n    ");
-  return buffer;
-  }
-function program3(depth0,data) {
-  
-  
-  data.buffer.push("Modal Content");
-  }
-
-function program5(depth0,data) {
-  
-  var buffer = '', stack1, helper, options;
-  data.buffer.push("\n      ");
-  stack1 = (helper = helpers['ic-modal-trigger'] || (depth0 && depth0['ic-modal-trigger']),options={hash:{
-    'class': ("ic-modal-close"),
-    'aria-label': ("close")
-  },hashTypes:{'class': "STRING",'aria-label': "STRING"},hashContexts:{'class': depth0,'aria-label': depth0},inverse:self.noop,fn:self.program(6, program6, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "ic-modal-trigger", options));
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n    ");
-  return buffer;
-  }
-function program6(depth0,data) {
-  
-  
-  data.buffer.push("×");
-  }
-
-  stack1 = helpers['if'].call(depth0, "isOpen", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n\n");
-  return buffer;
-  
-});
+exports["default"] = Ember.HTMLBars.template((function() {
+  var child0 = (function() {
+    var child0 = (function() {
+      var child0 = (function() {
+        return {
+          isHTMLBars: true,
+          cachedFragment: null,
+          build: function build(dom) {
+            var el0 = dom.createTextNode("Modal Content");
+            return el0;
+          },
+          render: function render(context, env, contextualElement) {
+            var dom = env.dom;
+            dom.detectNamespace(contextualElement);
+            if (this.cachedFragment === null) {
+              this.cachedFragment = this.build(dom);
+            }
+            var fragment = dom.cloneNode(this.cachedFragment, true);
+            return fragment;
+          }
+        };
+      }());
+      return {
+        isHTMLBars: true,
+        cachedFragment: null,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("      ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          var hooks = env.hooks, content = hooks.content;
+          dom.detectNamespace(contextualElement);
+          if (this.cachedFragment === null) {
+            this.cachedFragment = this.build(dom);
+          }
+          var fragment = dom.cloneNode(this.cachedFragment, true);
+          var morph0 = dom.createMorphAt(fragment,0,1,contextualElement);
+          content(morph0, "ic-modal-title", context, [], {}, {morph: morph0, template: child0}, env);
+          return fragment;
+        }
+      };
+    }());
+    var child1 = (function() {
+      var child0 = (function() {
+        return {
+          isHTMLBars: true,
+          cachedFragment: null,
+          build: function build(dom) {
+            var el0 = dom.createTextNode("×");
+            return el0;
+          },
+          render: function render(context, env, contextualElement) {
+            var dom = env.dom;
+            dom.detectNamespace(contextualElement);
+            if (this.cachedFragment === null) {
+              this.cachedFragment = this.build(dom);
+            }
+            var fragment = dom.cloneNode(this.cachedFragment, true);
+            return fragment;
+          }
+        };
+      }());
+      return {
+        isHTMLBars: true,
+        cachedFragment: null,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("      ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          var hooks = env.hooks, content = hooks.content;
+          dom.detectNamespace(contextualElement);
+          if (this.cachedFragment === null) {
+            this.cachedFragment = this.build(dom);
+          }
+          var fragment = dom.cloneNode(this.cachedFragment, true);
+          var morph0 = dom.createMorphAt(fragment,0,1,contextualElement);
+          content(morph0, "ic-modal-trigger", context, [], {"class": "ic-modal-close", "aria-label": "close"}, {morph: morph0, template: child0}, env);
+          return fragment;
+        }
+      };
+    }());
+    return {
+      isHTMLBars: true,
+      cachedFragment: null,
+      build: function build(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("  ");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("ic-modal-main");
+        var el2 = dom.createTextNode("\n\n");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n    ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n  ");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      render: function render(context, env, contextualElement) {
+        var dom = env.dom;
+        var hooks = env.hooks, get = hooks.get, content = hooks.content;
+        dom.detectNamespace(contextualElement);
+        if (this.cachedFragment === null) {
+          this.cachedFragment = this.build(dom);
+        }
+        var fragment = dom.cloneNode(this.cachedFragment, true);
+        var element0 = fragment.childNodes[1];
+        var morph0 = dom.createMorphAt(element0,0,1);
+        var morph1 = dom.createMorphAt(element0,1,2);
+        var morph2 = dom.createMorphAt(element0,2,3);
+        content(morph0, "if", context, [get(context, "makeTitle", env)], {}, {morph: morph0, template: child0}, env);
+        content(morph1, "if", context, [get(context, "makeTrigger", env)], {}, {morph: morph1, template: child1}, env);
+        content(morph2, "yield", context, [], {}, {morph: morph2}, env);
+        return fragment;
+      }
+    };
+  }());
+  return {
+    isHTMLBars: true,
+    cachedFragment: null,
+    build: function build(dom) {
+      var el0 = dom.createDocumentFragment();
+      var el1 = dom.createTextNode("");
+      dom.appendChild(el0, el1);
+      var el1 = dom.createTextNode("\n");
+      dom.appendChild(el0, el1);
+      return el0;
+    },
+    render: function render(context, env, contextualElement) {
+      var dom = env.dom;
+      var hooks = env.hooks, get = hooks.get, content = hooks.content;
+      dom.detectNamespace(contextualElement);
+      if (this.cachedFragment === null) {
+        this.cachedFragment = this.build(dom);
+      }
+      var fragment = dom.cloneNode(this.cachedFragment, true);
+      dom.repairClonedNode(fragment,[0]);
+      var morph0 = dom.createMorphAt(fragment,0,1,contextualElement);
+      content(morph0, "if", context, [get(context, "isOpen", env)], {}, {morph: morph0, template: child0}, env);
+      return fragment;
+    }
+  };
+}()));
