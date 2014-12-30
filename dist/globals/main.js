@@ -700,7 +700,9 @@ if (!$.expr[':'].tabbable) {
 exports["default"] = Ember.HTMLBars.template((function() {
   return {
     isHTMLBars: true,
+    blockParams: 0,
     cachedFragment: null,
+    hasRendered: false,
     build: function build(dom) {
       var el0 = dom.createTextNode("ic-modal-screen,\nic-modal,\nic-modal-main,\nic-modal-title {\n  display: block;\n}\n\nic-modal,\n.ic-modal-form {\n  display: none;\n  -webkit-overflow-scrolling: touch;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  top: 0;\n  overflow: auto;\n  background-color: hsla(0, 0%, 100%, .90);\n  padding: 10px;\n}\n\nic-modal[is-open],\n.ic-modal-form[is-open] {\n  display: block;\n}\n\nic-modal-main {\n  position: relative;\n  margin: 40px auto;\n  max-width: 800px;\n  padding: 20px;\n  border-radius: 4px;\n  background: #fff;\n  border: 1px solid hsl(0, 0%, 70%);\n}\n\nic-modal-title {\n  margin: 0 -20px 20px -20px;\n  padding: 0 20px 20px 20px;\n  border-bottom: 1px solid hsl(0, 0%, 90%);\n}\n\n.ic-modal-trigger.ic-modal-close {\n  position: absolute;\n  right: 10px;\n  top: 10px;\n  background: none;\n  border: none;\n  color: inherit;\n  font-size: 18px;\n  padding: 6px;\n}\n\n.ic-modal-trigger.ic-modal-close:focus {\n  outline: none;\n  text-shadow: 0 0 6px hsl(208, 47%, 60%),\n    0 0 2px hsl(208, 47%, 60%),\n    0 0 2px hsl(208, 47%, 60%),\n    0 0 1px hsl(208, 47%, 60%);\n}\n\n");
       return el0;
@@ -708,10 +710,18 @@ exports["default"] = Ember.HTMLBars.template((function() {
     render: function render(context, env, contextualElement) {
       var dom = env.dom;
       dom.detectNamespace(contextualElement);
+      var fragment;
       if (this.cachedFragment === null) {
-        this.cachedFragment = this.build(dom);
+        fragment = this.build(dom);
+        if (this.hasRendered) {
+          this.cachedFragment = fragment;
+        } else {
+          this.hasRendered = true;
+        }
       }
-      var fragment = dom.cloneNode(this.cachedFragment, true);
+      if (this.cachedFragment) {
+        fragment = dom.cloneNode(this.cachedFragment, true);
+      }
       return fragment;
     }
   };
@@ -724,7 +734,9 @@ exports["default"] = Ember.HTMLBars.template((function() {
       var child0 = (function() {
         return {
           isHTMLBars: true,
+          blockParams: 0,
           cachedFragment: null,
+          hasRendered: false,
           build: function build(dom) {
             var el0 = dom.createTextNode("Modal Content");
             return el0;
@@ -732,17 +744,27 @@ exports["default"] = Ember.HTMLBars.template((function() {
           render: function render(context, env, contextualElement) {
             var dom = env.dom;
             dom.detectNamespace(contextualElement);
+            var fragment;
             if (this.cachedFragment === null) {
-              this.cachedFragment = this.build(dom);
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
             }
-            var fragment = dom.cloneNode(this.cachedFragment, true);
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
             return fragment;
           }
         };
       }());
       return {
         isHTMLBars: true,
+        blockParams: 0,
         cachedFragment: null,
+        hasRendered: false,
         build: function build(dom) {
           var el0 = dom.createDocumentFragment();
           var el1 = dom.createTextNode("      ");
@@ -753,14 +775,22 @@ exports["default"] = Ember.HTMLBars.template((function() {
         },
         render: function render(context, env, contextualElement) {
           var dom = env.dom;
-          var hooks = env.hooks, content = hooks.content;
+          var hooks = env.hooks, block = hooks.block;
           dom.detectNamespace(contextualElement);
+          var fragment;
           if (this.cachedFragment === null) {
-            this.cachedFragment = this.build(dom);
+            fragment = this.build(dom);
+            if (this.hasRendered) {
+              this.cachedFragment = fragment;
+            } else {
+              this.hasRendered = true;
+            }
           }
-          var fragment = dom.cloneNode(this.cachedFragment, true);
+          if (this.cachedFragment) {
+            fragment = dom.cloneNode(this.cachedFragment, true);
+          }
           var morph0 = dom.createMorphAt(fragment,0,1,contextualElement);
-          content(morph0, "ic-modal-title", context, [], {}, {morph: morph0, template: child0}, env);
+          block(env, morph0, context, "ic-modal-title", [], {}, child0, null);
           return fragment;
         }
       };
@@ -769,7 +799,9 @@ exports["default"] = Ember.HTMLBars.template((function() {
       var child0 = (function() {
         return {
           isHTMLBars: true,
+          blockParams: 0,
           cachedFragment: null,
+          hasRendered: false,
           build: function build(dom) {
             var el0 = dom.createTextNode("×");
             return el0;
@@ -777,17 +809,27 @@ exports["default"] = Ember.HTMLBars.template((function() {
           render: function render(context, env, contextualElement) {
             var dom = env.dom;
             dom.detectNamespace(contextualElement);
+            var fragment;
             if (this.cachedFragment === null) {
-              this.cachedFragment = this.build(dom);
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
             }
-            var fragment = dom.cloneNode(this.cachedFragment, true);
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
             return fragment;
           }
         };
       }());
       return {
         isHTMLBars: true,
+        blockParams: 0,
         cachedFragment: null,
+        hasRendered: false,
         build: function build(dom) {
           var el0 = dom.createDocumentFragment();
           var el1 = dom.createTextNode("      ");
@@ -798,21 +840,31 @@ exports["default"] = Ember.HTMLBars.template((function() {
         },
         render: function render(context, env, contextualElement) {
           var dom = env.dom;
-          var hooks = env.hooks, content = hooks.content;
+          var hooks = env.hooks, block = hooks.block;
           dom.detectNamespace(contextualElement);
+          var fragment;
           if (this.cachedFragment === null) {
-            this.cachedFragment = this.build(dom);
+            fragment = this.build(dom);
+            if (this.hasRendered) {
+              this.cachedFragment = fragment;
+            } else {
+              this.hasRendered = true;
+            }
           }
-          var fragment = dom.cloneNode(this.cachedFragment, true);
+          if (this.cachedFragment) {
+            fragment = dom.cloneNode(this.cachedFragment, true);
+          }
           var morph0 = dom.createMorphAt(fragment,0,1,contextualElement);
-          content(morph0, "ic-modal-trigger", context, [], {"class": "ic-modal-close", "aria-label": "close"}, {morph: morph0, template: child0}, env);
+          block(env, morph0, context, "ic-modal-trigger", [], {"class": "ic-modal-close", "aria-label": "close"}, child0, null);
           return fragment;
         }
       };
     }());
     return {
       isHTMLBars: true,
+      blockParams: 0,
       cachedFragment: null,
+      hasRendered: false,
       build: function build(dom) {
         var el0 = dom.createDocumentFragment();
         var el1 = dom.createTextNode("  ");
@@ -833,26 +885,36 @@ exports["default"] = Ember.HTMLBars.template((function() {
       },
       render: function render(context, env, contextualElement) {
         var dom = env.dom;
-        var hooks = env.hooks, get = hooks.get, content = hooks.content;
+        var hooks = env.hooks, get = hooks.get, block = hooks.block, content = hooks.content;
         dom.detectNamespace(contextualElement);
+        var fragment;
         if (this.cachedFragment === null) {
-          this.cachedFragment = this.build(dom);
+          fragment = this.build(dom);
+          if (this.hasRendered) {
+            this.cachedFragment = fragment;
+          } else {
+            this.hasRendered = true;
+          }
         }
-        var fragment = dom.cloneNode(this.cachedFragment, true);
-        var element0 = fragment.childNodes[1];
+        if (this.cachedFragment) {
+          fragment = dom.cloneNode(this.cachedFragment, true);
+        }
+        var element0 = dom.childAt(fragment, [1]);
         var morph0 = dom.createMorphAt(element0,0,1);
         var morph1 = dom.createMorphAt(element0,1,2);
         var morph2 = dom.createMorphAt(element0,2,3);
-        content(morph0, "if", context, [get(context, "makeTitle", env)], {}, {morph: morph0, template: child0}, env);
-        content(morph1, "if", context, [get(context, "makeTrigger", env)], {}, {morph: morph1, template: child1}, env);
-        content(morph2, "yield", context, [], {}, {morph: morph2}, env);
+        block(env, morph0, context, "if", [get(env, context, "makeTitle")], {}, child0, null);
+        block(env, morph1, context, "if", [get(env, context, "makeTrigger")], {}, child1, null);
+        content(env, morph2, context, "yield");
         return fragment;
       }
     };
   }());
   return {
     isHTMLBars: true,
+    blockParams: 0,
     cachedFragment: null,
+    hasRendered: false,
     build: function build(dom) {
       var el0 = dom.createDocumentFragment();
       var el1 = dom.createTextNode("");
@@ -863,15 +925,23 @@ exports["default"] = Ember.HTMLBars.template((function() {
     },
     render: function render(context, env, contextualElement) {
       var dom = env.dom;
-      var hooks = env.hooks, get = hooks.get, content = hooks.content;
+      var hooks = env.hooks, get = hooks.get, block = hooks.block;
       dom.detectNamespace(contextualElement);
+      var fragment;
       if (this.cachedFragment === null) {
-        this.cachedFragment = this.build(dom);
+        fragment = this.build(dom);
+        if (this.hasRendered) {
+          this.cachedFragment = fragment;
+        } else {
+          this.hasRendered = true;
+        }
       }
-      var fragment = dom.cloneNode(this.cachedFragment, true);
+      if (this.cachedFragment) {
+        fragment = dom.cloneNode(this.cachedFragment, true);
+      }
       dom.repairClonedNode(fragment,[0]);
       var morph0 = dom.createMorphAt(fragment,0,1,contextualElement);
-      content(morph0, "if", context, [get(context, "isOpen", env)], {}, {morph: morph0, template: child0}, env);
+      block(env, morph0, context, "if", [get(env, context, "isOpen")], {}, child0, null);
       return fragment;
     }
   };
